@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="txtBoldBlack17">
+        <item name="android:fontFamily">@font/catamaran_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="txtBoldBlack20">
+        <item name="android:fontFamily">@font/catamaran_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="txtBoldBlack35">
+        <item name="android:fontFamily">@font/catamaran_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="txtBoldCyen20">
+        <item name="android:fontFamily">@font/catamaran_bold</item>
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="txtMediumBlack16">
+        <item name="android:fontFamily">@font/catamaran_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="txtRegularBlack14">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/catamaran</item>
+    </style>
+</resources>
