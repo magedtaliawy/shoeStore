@@ -60,7 +60,6 @@ class ShoeListFragment : Fragment() {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
         }
         return super.onOptionsItemSelected(item)
-
     }
 
     fun addShoe(shoe: Shoe) {

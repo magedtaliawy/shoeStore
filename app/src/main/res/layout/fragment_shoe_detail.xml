@@ -22,7 +22,7 @@
                 android:layout_height="100dp"
                 android:layout_marginVertical="10dp"
                 android:src="@drawable/shoe1"
-                />
+                tools:ignore="ContentDescription" />
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
