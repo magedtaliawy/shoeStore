@@ -118,6 +118,7 @@
                             android:layout_height="match_parent"
                             android:background="@null"
                             android:hint="@string/shoeSize"
+                            android:inputType="numberDecimal"
                             android:padding="8dp" />
                     </com.google.android.material.card.MaterialCardView>
 

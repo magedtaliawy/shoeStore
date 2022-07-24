@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore_starter.R
+import com.example.shoestore_starter.ViewModel.ShoeViewModel
 import com.example.shoestore_starter.databinding.FragmentShoeListBinding
 import com.example.shoestore_starter.databinding.ItemShoeBinding
 import com.example.shoestore_starter.modeks.Shoe
@@ -14,7 +17,7 @@ import com.example.shoestore_starter.modeks.Shoe
 class ShoeListFragment : Fragment() {
 
     lateinit var binding: FragmentShoeListBinding
-
+    lateinit var viewModel:ShoeViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +30,11 @@ class ShoeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel=ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
+        binding.setLifecycleOwner(viewLifecycleOwner)
+        viewModel.shoesList.observe(viewLifecycleOwner, Observer { shoesList->
+            addShoesList(shoesList)
+        })
         binding.addShoeBtn.setOnClickListener {
             findNavController().navigate(
                 ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment()
@@ -35,7 +43,14 @@ class ShoeListFragment : Fragment() {
 
         val args=ShoeListFragmentArgs.fromBundle(requireArguments())
         if (args.shoe!=null){
-//            addShoe(args.shoe)
+            viewModel.addShoe(args.shoe!!)
+        }
+
+    }
+
+    private fun addShoesList(shoesList: MutableList<Shoe>?) {
+        for (shoe in shoesList!!){
+            addShoe(shoe)
         }
 
     }
