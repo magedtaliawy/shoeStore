@@ -23,7 +23,7 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_welcome,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome, container, false)
         return binding.root
     }
 
@@ -31,7 +31,8 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.skipBtn.setOnClickListener {
-            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment()) }
+            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment())
+        }
     }
 
 }

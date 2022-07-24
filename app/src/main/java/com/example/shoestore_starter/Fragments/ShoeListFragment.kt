@@ -41,11 +41,6 @@ class ShoeListFragment : Fragment() {
             )
         }
 
-        val args=ShoeListFragmentArgs.fromBundle(requireArguments())
-        if (args.shoe!=null){
-            viewModel.addShoe(args.shoe!!)
-        }
-
     }
 
     private fun addShoesList(shoesList: MutableList<Shoe>?) {

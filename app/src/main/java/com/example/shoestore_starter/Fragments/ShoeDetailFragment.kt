@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoestore_starter.R
+import com.example.shoestore_starter.ViewModel.ShoeViewModel
 import com.example.shoestore_starter.databinding.FragmentShoeDetailBinding
 import com.example.shoestore_starter.modeks.Shoe
 
 class ShoeDetailFragment : Fragment() {
 
     lateinit var binding: FragmentShoeDetailBinding
+    lateinit var viewModel:ShoeViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,22 +29,25 @@ class ShoeDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cancelBtn.setOnClickListener { findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(null)) }
+        viewModel=ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
+        binding.cancelBtn.setOnClickListener {
+            findNavController().navigate(
+                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
+            )
+        }
         binding.saveBtn.setOnClickListener { goToShoeList() }
     }
 
     private fun goToShoeList() {
         if (dataIsValid()) {
             val shoeName = binding.shoeNameEt.text.toString()
-            val shoeSize : Double = (binding.shoeSizeEt.text.toString()).toDouble()
+            val shoeSize: Double = (binding.shoeSizeEt.text.toString()).toDouble()
             val shoeCompany = binding.shoeCompanyEt.text.toString()
             val description = binding.descriptionEt.text.toString()
             val shoeModel = Shoe(shoeName, shoeSize, shoeCompany, description)
-
+            viewModel.addShoe(shoeModel)
             findNavController().navigate(
-                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment(
-                    shoeModel
-                )
+                ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
             )
         }
     }

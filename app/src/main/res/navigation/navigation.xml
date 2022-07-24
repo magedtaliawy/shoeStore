@@ -67,10 +67,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out"/>
-        <argument
-            android:name="shoe"
-            app:argType="com.example.shoestore_starter.modeks.Shoe"
-            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
