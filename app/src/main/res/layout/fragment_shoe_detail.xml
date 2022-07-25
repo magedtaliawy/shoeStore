@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="shoe"
+            type="com.example.shoestore_starter.modeks.Shoe" />
 
     </data>
 
@@ -55,6 +58,7 @@
 
                         <EditText
                             android:id="@+id/shoeNameEt"
+                            android:text="@={shoe.name}"
                             style="@style/txtRegularBlack14"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -85,6 +89,7 @@
                         <EditText
                             android:id="@+id/shoeCompanyEt"
                             style="@style/txtRegularBlack14"
+                            android:text="@={shoe.company}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -114,6 +119,7 @@
                         <EditText
                             android:id="@+id/shoeSizeEt"
                             style="@style/txtRegularBlack14"
+                            android:text="@={shoe.size+``}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
@@ -144,6 +150,7 @@
                         <EditText
                             android:id="@+id/descriptionEt"
                             style="@style/txtRegularBlack14"
+                            android:text="@={shoe.description}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"

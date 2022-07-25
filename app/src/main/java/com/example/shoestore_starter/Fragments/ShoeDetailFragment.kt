@@ -17,12 +17,14 @@ class ShoeDetailFragment : Fragment() {
 
     lateinit var binding: FragmentShoeDetailBinding
     lateinit var viewModel:ShoeViewModel
+    lateinit var currentShoe:Shoe
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+        currentShoe=Shoe("",0.0,"","")
         return binding.root
     }
 
@@ -30,6 +32,9 @@ class ShoeDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel=ViewModelProvider(requireActivity()).get(ShoeViewModel::class.java)
+
+        binding.shoe=currentShoe
+
         binding.cancelBtn.setOnClickListener {
             findNavController().navigate(
                 ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
@@ -40,12 +45,7 @@ class ShoeDetailFragment : Fragment() {
 
     private fun goToShoeList() {
         if (dataIsValid()) {
-            val shoeName = binding.shoeNameEt.text.toString()
-            val shoeSize: Double = (binding.shoeSizeEt.text.toString()).toDouble()
-            val shoeCompany = binding.shoeCompanyEt.text.toString()
-            val description = binding.descriptionEt.text.toString()
-            val shoeModel = Shoe(shoeName, shoeSize, shoeCompany, description)
-            viewModel.addShoe(shoeModel)
+            viewModel.addShoe(currentShoe)
             findNavController().navigate(
                 ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment()
             )
@@ -53,19 +53,19 @@ class ShoeDetailFragment : Fragment() {
     }
 
     private fun dataIsValid(): Boolean {
-        if (binding.shoeNameEt.text.isEmpty()) {
+        if (currentShoe.name.isEmpty()) {
             binding.shoeNameEt.error = getString(R.string.error)
             return false
         }
-        if (binding.shoeCompanyEt.text.isEmpty()) {
+        if (currentShoe.company.isEmpty()) {
             binding.shoeCompanyEt.error = getString(R.string.error)
             return false
         }
-        if (binding.shoeSizeEt.text.isEmpty()) {
+        if (currentShoe.size.toString().isEmpty()) {
             binding.shoeSizeEt.error = getString(R.string.error)
             return false
         }
-        if (binding.descriptionEt.text.isEmpty()) {
+        if (currentShoe.description.isEmpty()) {
             binding.descriptionEt.error = getString(R.string.error)
             return false
         }
